@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as Sentry from '@sentry/react'
 import { Integrations } from '@sentry/tracing'
+import {Button } from 'antd'
 
 Sentry.init({
   dsn:'http://770e5c1447d34453858394602ef4ae7d@118.195.203.216:9000/2',
@@ -16,7 +17,9 @@ Sentry.init({
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <div style={{padding:'20px'}}>
+      <App/>
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 );

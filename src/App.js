@@ -1,14 +1,39 @@
 import React from 'react';
+import { Button } from 'antd';
+import FormRender, { useForm } from 'form-render';
 
-function App() {
-  const fn = () => {
-    console.log(window.a.b);
-  }
+const schema = {
+  type: 'object',
+  properties: {
+    input1: {
+      title: '简单输入框',
+      type: 'string',
+      required: true,
+    },
+    select1: {
+      title: '单选',
+      type: 'string',
+      enum: ['a', 'b', 'c'],
+      enumNames: ['早', '中', '晚'],
+    },
+  },
+};
+
+const Demo = () => {
+  const form = useForm();
+  const onFinish = (formData, errors) => {
+    console.log('formData:', formData, 'errors', errors);
+    const a = '123'
+    a.map(item=>{})
+  };
   return (
-    <div className="App">
-       <button onClick={fn}>Break the world</button>
+    <div>
+      <FormRender form={form} schema={schema} onFinish={onFinish} />
+      <Button type="primary" onClick={form.submit}>
+        提交
+      </Button>
     </div>
   );
-}
+};
 
-export default App;
+export default Demo;
